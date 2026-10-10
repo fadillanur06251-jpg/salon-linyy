@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Salon Liny — layanan rambut dan kecantikan dengan pelayanan ramah. Hubungi kami untuk informasi dan reservasi.">
+  <title>Salon Liny | Cantik, Nyaman, Percaya Diri</title>
+  <style>
+    :root {
+      --rose: #b84f72;
+      --rose-dark: #87334f;
+      --pink: #f9e7ed;
+      --cream: #fffaf7;
+      --ink: #34272d;
+      --muted: #75666d;
+      --white: #ffffff;
+      --line: #f0d8e0;
+      --shadow: 0 16px 40px rgba(87, 39, 57, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,250,247,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-family: Georgia, serif; font-size: 1.65rem; font-weight: bold; color: var(--rose-dark); letter-spacing: -.5px; }
+    .brand span { color: var(--rose); }
+    nav { display: flex; gap: 25px; align-items: center; font-size: .94rem; font-weight: 700; }
+    nav a:hover { color: var(--rose); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 999px; background: var(--rose); color: white; font-weight: 700; border: 0; cursor: pointer; transition: .2s; }
+    .btn:hover { background: var(--rose-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--rose-dark); border: 1px solid var(--rose); }
+    .btn-outline:hover { color: white; }
+    .menu-toggle { display: none; border: 0; background: transparent; font-size: 1.7rem; color: var(--rose-dark); }
+    .hero { padding: 72px 0 68px; background: radial-gradient(circle at 80% 15%, #f6d5e0 0, transparent 31%), linear-gradient(135deg, #fffaf7, #fceef2); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px; }
+    .eyebrow { color: var(--rose); text-transform: uppercase; font-size: .78rem; letter-spacing: 2px; font-weight: 800; }
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; line-height: 1.15; }
+    h1 { font-size: clamp(2.7rem, 6vw, 4.6rem); margin: 13px 0 18px; letter-spacing: -1.8px; }
+    h1 em { color: var(--rose); font-weight: normal; }
+    .hero p { max-width: 540px; color: var(--muted); font-size: 1.08rem; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-art { min-height: 390px; border-radius: 48% 48% 24px 24px; background: linear-gradient(145deg, #e8aabd, #f7dfe6 55%, #c77c96); display: grid; place-items: center; position: relative; box-shadow: var(--shadow); }
+    .hero-art:before { content: ""; position: absolute; inset: 22px; border: 1px solid rgba(255,255,255,.7); border-radius: inherit; }
+    .hero-art-inner { text-align: center; position: relative; padding: 30px; color: #fff; }
+    .hero-art .scissors { font-size: 6rem; line-height: 1; filter: drop-shadow(0 6px 5px rgba(90,35,56,.15)); }
+    .hero-art h2 { font-size: 2.3rem; margin: 18px 0 5px; }
+    .hero-art p { color: white; font-size: .95rem; margin: 0; }
+    .floating { position: absolute; background: white; border-radius: 16px; padding: 12px 16px; box-shadow: var(--shadow); font-weight: 700; color: var(--rose-dark); }
+    .float-one { top: 45px; left: -22px; }
+    .float-two { bottom: 40px; right: -20px; }
+    section { padding: 78px 0; }
+    .section-head { max-width: 650px; text-align: center; margin: 0 auto 38px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 10px 0 12px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: center; }
+    .about-card { background: var(--pink); padding: 38px; border-radius: 28px; min-height: 280px; display: flex; flex-direction: column; justify-content: center; }
+    .about-card .big-icon { font-size: 3.2rem; }
+    .about-card h3 { font-size: 1.7rem; margin: 10px 0; }
+    .about-copy h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 10px 0 18px; }
+    .about-copy p { color: var(--muted); }
+    .check-list { padding: 0; list-style: none; display: grid; gap: 10px; margin-top: 22px; }
+    .check-list li:before { content: "✓"; color: var(--rose); font-weight: bold; margin-right: 10px; }
+    .services { background: #fff3f6; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { background: white; padding: 28px; border: 1px solid var(--line); border-radius: 22px; transition: .2s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .service-icon { width: 54px; height: 54px; border-radius: 17px; display: grid; place-items: center; background: var(--pink); font-size: 1.65rem; }
+    .service-card h3 { font-size: 1.35rem; margin: 19px 0 8px; }
+    .service-card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 24px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .gallery-tile { min-height: 220px; border-radius: 22px; display: flex; align-items: end; padding: 22px; color: white; font-family: Georgia, serif; font-size: 1.35rem; font-weight: bold; overflow: hidden; position: relative; background: linear-gradient(145deg, #d68ca5, #8e3e5b); }
+    .gallery-tile:nth-child(2) { background: linear-gradient(145deg, #e9b7c7, #b65b7b); }
+    .gallery-tile:nth-child(3) { background: linear-gradient(145deg, #b56e87, #5f3446); }
+    .gallery-tile:before { content: "✦"; position: absolute; top: 12px; right: 22px; font-size: 5rem; opacity: .22; }
+    .gallery-tile span { position: relative; }
+    .contact { background: linear-gradient(135deg, #f9e7ed, #fffaf7); }
+    .contact-panel { background: white; border: 1px solid var(--line); border-radius: 28px; padding: clamp(25px, 5vw, 48px); display: grid; grid-template-columns: 1fr 1fr; gap: 35px; box-shadow: var(--shadow); }
+    .contact-panel h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 8px 0 14px; }
+    .contact-panel p { color: var(--muted); }
+    .contact-details { display: grid; gap: 15px; align-content: center; }
+    .detail { display: flex; gap: 13px; align-items: flex-start; }
+    .detail-icon { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 14px; background: var(--pink); }
+    .detail strong { display: block; }
+    .detail small { color: var(--muted); font-size: .92rem; }
+    footer { padding: 25px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+    .wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 9; border-radius: 999px; padding: 13px 18px; background: #218c57; color: white; font-weight: bold; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid, .contact-panel { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      .hero-art { min-height: 320px; margin: 10px 10px 0; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile { min-height: 170px; }
+      nav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--cream); padding: 20px; flex-direction: column; border-bottom: 1px solid var(--line); }
+      nav.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav > .btn { display: none; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .service-grid { grid-template-columns: 1fr; }
+      .hero-art { min-height: 280px; }
+      .float-one { left: -8px; }
+      .float-two { right: -8px; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#beranda" aria-label="Salon Liny beranda">Salon <span>Liny</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+      <nav id="mainNav">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <a class="btn" href="#kontak">Hubungi Kami</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Selamat datang di Salon Liny</div>
+          <h1>Rawat dirimu,<br><em>pancarkan cantikmu.</em></h1>
+          <p>Tempat untuk menyegarkan penampilan dan meluangkan waktu untuk diri sendiri. Nikmati suasana yang nyaman dengan pelayanan yang ramah.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#layanan">Lihat Layanan</a>
+            <a class="btn btn-outline" href="#kontak">Informasi & Reservasi</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Ilustrasi dekoratif Salon Liny">
+          <div class="hero-art-inner">
+            <div class="scissors">✂</div>
+            <h2>Salon Liny</h2>
+            <p>Beauty • Care • Confidence</p>
+          </div>
+          <div class="floating float-one">♡ Me Time</div>
+          <div class="floating float-two">✦ Feel Beautiful</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container about-grid">
+        <div class="about-card">
+          <div class="big-icon">🌸</div>
+          <h3>Waktunya memanjakan diri</h3>
+          <p>Luangkan waktu untuk merawat diri dan merasa lebih percaya diri.</p>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">Tentang kami</div>
+          <h2>Kecantikan dimulai dari rasa nyaman.</h2>
+          <p>Salon Liny hadir sebagai pilihan untuk kamu yang ingin merawat penampilan. Kami ingin memberikan pengalaman yang nyaman, ramah, dan menyenangkan bagi setiap pelanggan.</p>
+          <p>Informasi pada website ini merupakan profil awal dan dapat disesuaikan dengan layanan serta identitas resmi Salon Liny.</p>
+          <ul class="check-list">
+            <li>Pelayanan yang ramah</li>
+            <li>Suasana nyaman dan bersih</li>
+            <li>Layanan dapat disesuaikan dengan kebutuhan</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="layanan">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Layanan kami</div>
+          <h2>Perawatan untuk kamu</h2>
+          <p>Berikut contoh kategori layanan yang bisa ditampilkan. Ubah sesuai layanan yang benar-benar tersedia di Salon Liny.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon">💇‍♀️</div>
+            <h3>Perawatan Rambut</h3>
+            <p>Perawatan dan penataan rambut untuk membantu penampilan terasa lebih segar.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">💆‍♀️</div>
+            <h3>Perawatan Diri</h3>
+            <p>Waktu khusus untuk relaksasi dan merawat diri dalam suasana yang nyaman.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">💅</div>
+            <h3>Kecantikan</h3>
+            <p>Informasi layanan kecantikan dapat ditambahkan sesuai fasilitas yang tersedia.</p>
+          </article>
+        </div>
+        <p class="note">Harga, daftar layanan, dan durasi perawatan dapat ditambahkan setelah datanya tersedia.</p>
+      </div>
+    </section>
+
+    <section id="galeri">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Galeri</div>
+          <h2>Suasana dan inspirasi</h2>
+          <p>Bagian ini sementara menggunakan kartu desain. Nantinya, ganti dengan foto asli Salon Liny agar website lebih meyakinkan.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-tile"><span>Hair Care</span></div>
+          <div class="gallery-tile"><span>Beauty Time</span></div>
+          <div class="gallery-tile"><span>Feel Confident</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontak">
+      <div class="container contact-panel">
+        <div>
+          <div class="eyebrow">Kontak</div>
+          <h2>Yuk, kenalan dengan Salon Liny.</h2>
+          <p>Hubungi Salon Liny untuk menanyakan layanan, harga, jam buka, atau reservasi. Ganti informasi contoh di samping dengan kontak resmi salon.</p>
+          <a class="btn" href="https://wa.me/" target="_blank" rel="noopener">Buka WhatsApp</a>
+        </div>
+        <div class="contact-details">
+          <div class="detail"><div class="detail-icon">📍</div><div><strong>Alamat</strong><small>Tambahkan alamat lengkap Salon Liny</small></div></div>
+          <div class="detail"><div class="detail-icon">📱</div><div><strong>WhatsApp</strong><small>Tambahkan nomor WhatsApp resmi</small></div></div>
+          <div class="detail"><div class="detail-icon">🕒</div><div><strong>Jam operasional</strong><small>Tambahkan hari dan jam buka salon</small></div></div>
+          <div class="detail"><div class="detail-icon">📷</div><div><strong>Media sosial</strong><small>Tambahkan Instagram atau media sosial salon</small></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Salon Liny. Dibuat dengan semangat belajar dan teknologi.</div>
+  </footer>
+  <a class="wa-float" href="#kontak" aria-label="Kontak Salon Liny">✆ Kontak</a>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
